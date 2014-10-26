@@ -1,0 +1,40 @@
+1/所有日志打印到项目日志
+
+2/每个用户打印日志不一样
+
+3/请求的线程阻塞了，先找到程序运行到哪里阻塞了。一般连接数据库哇 远程请求哇 。都是因为跟外部的连接
+
+
+
+========================
+
+一般在部署Tomcat后，运行久了，catalina.out文件会越来越大，对系统的稳定造成了一定的影响。 
+可通过修改conf/logging.properties日志配置文件来屏蔽掉这部分的日志信息。 
+
+1catalina.org.apache.juli.FileHandler.level = WARNING 
+1catalina.org.apache.juli.FileHandler.directory = ${catalina.base}/logs 
+1catalina.org.apache.juli.FileHandler.prefix = catalina. 
+
+将level级别设置成WARNING就可以大量减少日志的输出，当然也可以设置成OFF，直接禁用掉。 
+
+一般日志的级别有： 
+SEVERE (highest value) > WARNING > INFO > CONFIG > FINE > FINER > FINEST (lowest value) 
+
+========================
+
+
+catalina.out   Tomcat引擎的日志文件
+localhost.log  Tomcat下内部代码丢出的日志
+
+我的理解是，除了正常的，把指定的日志（含异常）打到指定文件中以外
+它们也可以作为参考来排除问题
+
+========================
+
+
+
+
+
+
+
+
